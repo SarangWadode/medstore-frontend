@@ -1,19 +1,28 @@
-// import logo from './logo.svg';
 import styled from 'styled-components';
-import AndroidIcon from '@material-ui/icons/Android';
+import Header from './header/Header'
+import Content from './content/Content'
+import Footer from './footer/Footer'
+import {BrowserRouter as Router, Switch} from 'react-router-dom';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Sarang>Hello from <AndroidIcon/></Sarang>
-      </header>
-    </div>
-  );
+  return <>
+    <HeaderContainer >
+      <Header />
+    </HeaderContainer>
+    
+    <MainContainer>
+      <Content />
+    </MainContainer>
+
+    <FooterContainer>
+      <Footer />
+    </FooterContainer>
+
+  </>
 }
 
 export default App;
-const Sarang = styled.main`
-  --fire: #f00;
-  color: var(--fire);
-`;
+
+const HeaderContainer = styled.header``;
+const MainContainer = styled.div``;
+const FooterContainer = styled.footer``;
