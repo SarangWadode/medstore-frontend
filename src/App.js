@@ -1,28 +1,42 @@
 import styled from 'styled-components';
 import Header from './header/Header'
 import Content from './content/Content'
-import Footer from './footer/Footer'
-import {BrowserRouter as Router, Switch} from 'react-router-dom';
+import Footer from './footer/Footer';
+import SignUp from './content/SignUp'
+
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+import {urls} from './urls';
 
 function App() {
-  return <>
-    <HeaderContainer >
-      <Header />
-    </HeaderContainer>
+
+  return <Router>
+    
+    <Header />
     
     <MainContainer>
-      <Content />
+    <Switch>
+      {
+        urls.map(url=>{
+          return <Route path={url.path} component={url.component} key={url.path} />
+        })
+      }
+
+      {/* Register page */}
+      <Route path="/signup/" component={SignUp}/>
+
+      <Route path="/">
+            <Content />
+      </Route>
+    </Switch>
     </MainContainer>
-
-    <FooterContainer>
-      <Footer />
-    </FooterContainer>
-
-  </>
+      
+    <Footer />
+  </Router>
 }
 
 export default App;
 
-const HeaderContainer = styled.header``;
-const MainContainer = styled.div``;
-const FooterContainer = styled.footer``;
+const MainContainer = styled.div`
+    background-color: hsl(130, 50%, 50%);
+`;
